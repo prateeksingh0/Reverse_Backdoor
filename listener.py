@@ -1,4 +1,4 @@
-import socket, json, base64, optparse
+import socket, json, base64, optparse, sys
 from json import JSONDecodeError
 
 
@@ -44,7 +44,7 @@ class Listener:
         self.reliable_send(command)
         if command[0] == "exit":
             self.connection.close()
-            exit()
+            sys.exit()
         return self.reliable_receive()
 
     def write_file(self, path, content):
