@@ -63,6 +63,8 @@ class Listener:
             try:
                 if command[0] == "upload":
                     content = self.read_file(command[1])
+                    name = command[1].split("/")[-1]
+                    command[1] = name
                     command.append(content.decode())
                 result = self.execute_remotely(command)
                 if command[0]=="download" and "[-] Error" not in result:
